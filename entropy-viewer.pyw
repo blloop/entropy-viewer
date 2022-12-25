@@ -1,6 +1,7 @@
+import os
+import math
 from tkinter import *
 from tkinter.filedialog import askopenfilename
-import os
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, 
 NavigationToolbar2Tk)
@@ -48,27 +49,31 @@ def analyze_file():
             figsize = (6, 3),
             dpi = 100
         )
-        bytes_plot = new_plot.add_subplot(111)
+        bytes_plot = new_plot.add_subplot(111)      
+        bytes_plot.set_ylim([0, 1])
         out_bytes = []
 
         # Open file and read 256 bytes at a time
         with open(current_file, 'rb') as f:
             for i in range(num_bytes // 256):
                 
-                bytes = [0] * 256
-                uniques = 0
+                e_bytes = [0] * 256
+                entropy = 0.0
 
+                # Calculate list of counts of unique byte values (0-255)
                 for j in range(256):
-
-                    # Calculate number of unique byte values in 256 bytes
                     one_byte = f.read(1)
-                    if not one_byte:
-                        break
-                    if (bytes[int.from_bytes(one_byte, 'big') - 1] == 0):
-                        uniques += 1
-                        bytes[int.from_bytes(one_byte, 'big') - 1] = 1
-        
-                out_bytes.append(uniques / 256)
+                    e_bytes[int.from_bytes(one_byte, 'big')] += 1
+                
+                # Calculate entropy based on all positive list values
+                for k in e_bytes:
+                    if (k == 0):
+                        continue
+                    p = (k / 256)
+                    entropy = entropy - (p * (math.log(p, 256)))
+
+                # Add entropy value to our output list
+                out_bytes.append(entropy)
 
         # Create plot on canvas and add to UI
         bytes_plot.plot(out_bytes)
