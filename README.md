@@ -21,11 +21,29 @@ The main use for this appplication is to detect encryption keys within a given f
 
 ### Executing program
 
-* Run the program file in your 
+* Run the program file on your computer
 * Alternatively, you can use the following command: 
 ```
 python entropy-viewer.pyw
 ```
+
+## Usage
+
+> :warning: Do not run this program on **large** files (>100 MB)! Runs slowly without a high end processor
+
+### Examples
+
+* Simple PNG File ~ 2 MB
+
+![PNG Analysis](img/example-1.png)
+
+* Simple PDF File ~ 2 MB
+
+![PDF Analysis](img/example-2.png)
+
+* Random Bytes ~ 2 MB
+
+![Random Bytes Analysis](img/example-3.png)
 
 ## License
 
