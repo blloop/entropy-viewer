@@ -22,9 +22,13 @@ The main use for this appplication is to detect encryption keys within a given f
 ### Executing program
 
 * Run the program file on your computer
-* Alternatively, you can use the following command: 
+* You can also use the following terminal command to run the GUI: 
 ```
 python entropy-viewer.pyw
+```
+* Alternatively, you can call the program on the file directly from the terminal:
+```
+python entropy-viewer.py (file_name)
 ```
 
 ## Usage
@@ -33,17 +37,9 @@ python entropy-viewer.pyw
 
 ### Examples
 
-* Simple PNG File ~ 2 MB
-
-![PNG Analysis](img/example-1.png)
-
-* Simple PDF File ~ 2 MB
-
-![PDF Analysis](img/example-2.png)
-
-* Random Bytes ~ 2 MB
-
-![Random Bytes Analysis](img/example-3.png)
+| Simple PNG File ~2MB | Simple PDF File ~2MB | Random Bytes ~2MB |
+| --- | --- | --- |
+| <img src="img/example-1.png" width="400" alt="PNG Analysis"> | <img src="img/example-2.png" width="400" alt="PDF Analysis"> | <img src="img/example-3.png" width="400" alt="Random Bytes Analysis">
 
 ## License
 
